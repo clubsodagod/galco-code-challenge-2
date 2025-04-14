@@ -2,8 +2,6 @@
 
 A responsive and accessible frontend application built with **React** and **Next.js** that displays a list of products and allows filtering by **category** and **price range**, with optional cart functionality and dynamic theme toggling.
 
-> ✅ Includes tests, semantic HTML, ARIA accessibility, Knockout-compatible badge rendering structure, and Magento 2-style modularity.
-
 ---
 
 ## 📦 Features
@@ -35,7 +33,7 @@ A responsive and accessible frontend application built with **React** and **Next
 | **MUI (Material UI)** | Component styling & theming |
 | **SCSS**           | Optional styling integration   |
 | **ARIA**           | Accessible interactions        |
-| **products.json**  | Static mock product dataset    |
+| **products.json**  | Static mock product dataset as a ts file in json format    |
 
 ---
 
@@ -93,7 +91,7 @@ npm run test:coverage
 
 ## 🚀 Live Deployment
 
-> [🔗 View the Demo on Vercel](https://your-vercel-link.vercel.app)
+> [🔗 View the Demo on Vercel](https://galco-hired-maliek.vercel.app)
 
 ---
 
