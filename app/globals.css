@@ -1,9 +1,30 @@
 @import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+:root,
+[data-theme='light'],
+[data-theme='dark'] {
+  transition: background-color 0.3s ease, color 0.1s ease;
 }
+
+html, body {
+  transition: background-color 0.3s ease, color 0.1s ease;
+}
+
+p,span, h1, h2, h3, h4, h5, h6 {
+  @apply  text-black  dark:text-white;
+}
+
+.product-card {
+  @apply transition-colors duration-300;
+  @apply bg-blue-100 dark:bg-blue-900 rounded-4xl;
+}
+
+.background-paper {
+  @apply transition-colors duration-300;
+  @apply bg-gray-50 dark:bg-gray-900 ;
+}
+
 
 @theme inline {
   --color-background: var(--background);
@@ -24,3 +45,5 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+
