@@ -2,6 +2,25 @@
   "name": "galco-code-challenge",
   "version": "0.1.0",
   "private": true,
+  "description": "Frontend application built for Galco's developer challenge. Includes product filtering, cart functionality, theme toggling, and accessibility best practices.",
+  "author": "Maliek Davis <self@maliek-davis.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/clubsodagod/galco-code-challenge-2.git"
+  },
+  "homepage": "https://galco-hired-me.vercel.app",
+  "keywords": [
+    "nextjs",
+    "mui",
+    "tailwind",
+    "typescript",
+    "cart",
+    "product-filter",
+    "accessibility",
+    "ecommerce",
+    "galco"
+  ],
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build",

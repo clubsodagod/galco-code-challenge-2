@@ -1,72 +1,64 @@
-"use client"
+"use client";
 
-import React from 'react'
+import React from 'react';
 import ShoppingCartRoundedIcon from '@mui/icons-material/ShoppingCartRounded';
 import Link from 'next/link';
 import { Switch, ThemeProvider, useColorScheme } from '@mui/material';
-import lightTheme from '../_library/themes/light-theme'
+import lightTheme from '../_library/themes/light-theme';
 
+const Navbar = () => {
+    const { mode, systemMode, setMode } = useColorScheme();
 
+    // Determine effective color mode
+    const effectiveMode = mode === 'system' ? systemMode : mode;
 
-const Navbar = ({ }) => {
-    
-    const { mode, setMode } = useColorScheme();
-
+    // Cycle: light → dark → system → light
     const toggleDarkTheme = React.useCallback(() => {
-        if (mode) {
-            const currMode = mode === 'dark' ? 'light' : 'dark';
-            setMode(currMode);
+        if (mode === 'light') {
+            setMode('dark');
+        } else if (mode === 'dark') {
+            setMode('light');
+        } else {
+            if (systemMode) {
+                setMode(systemMode.toLowerCase() === 'light' ? 'dark' : 'light');
+            }
+            
         }
-    }, [mode, setMode])
+    }, [mode, setMode]);
 
-
-    if (!mode) {
-        return null
-    }
-
+    if (!mode) return null;
 
     return (
-        <nav
-        >
-            <div
-                className='w-full flex justify-between items-center py-3  sticky'
-            >
-
-                {/* Logo - Store Name */}
-
-                <Link href={"/"}>
-                    <h1
-                        className='text-2xl'
-                    >
-                        Hello World Shop
-                    </h1>
+        <nav>
+            <div className="w-full flex justify-between items-center py-3 sticky">
+                {/* Logo */}
+                <Link href="/">
+                    <h1 className="text-2xl">Hello World Shop</h1>
                 </Link>
 
-                <div>
-
+                {/* Theme Toggle */}
+                <div className="flex items-center gap-2">
                     <Switch
-                        checked={mode === 'dark'}
-                        onChange={() => toggleDarkTheme()}
-                        aria-label={" 'aria-label': 'Toggle dark mode' "}
+                        checked={effectiveMode === 'dark'}
+                        onChange={toggleDarkTheme}
+                        aria-label="Toggle dark mode"
                     />
+                    <span className="text-sm capitalize text-gray-500 dark:text-gray-300">
+                        {mode}
+                    </span>
                 </div>
 
-
-                {/* cart button */}
-
-                <Link href={'/cart'}>
+                {/* Cart Link */}
+                <Link href="/cart">
                     <ShoppingCartRoundedIcon
-                        fontSize='large'
-                    className='text-black dark:text-white'
+                        fontSize="large"
+                        className="text-black dark:text-white"
                     />
                 </Link>
-
             </div>
-
         </nav>
-    )
-}
-
+    );
+};
 
 export default function ToggleColorMode() {
     return (
